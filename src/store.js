@@ -1,10 +1,19 @@
-import { createStore, combineReducers } from 'redux';
-import foodReducer from "./reducers/FoodReducer";
+import { createStore, combineReducers } from "redux";
+import ExerciseReducer from "./reducers/ExerciseReducer";
+
+export const INITIAL_STATE = {
+  exerciseList: [
+    {
+      name: "Pullups",
+      subtitle: "Bodyweight",
+    },
+  ],
+};
 
 const rootReducer = combineReducers({
-  foodReducer: foodReducer
-})
+  ExerciseReducer: ExerciseReducer,
+});
 
-const configureStore = () => createStore(rootReducer)
+const configureStore = () => createStore(rootReducer);
 
 export default configureStore;

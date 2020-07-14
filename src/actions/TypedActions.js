@@ -1,15 +1,11 @@
-import { ADD_FOOD, DELETE_FOOD } from "./Types";
+import { ADD_Exercise, DELETE_Exercise } from "./Types";
 
-export const addFood = (food) => (
-  {
-    type: ADD_FOOD,
-    data: food
-  }
-)
+export const addFood = (Exercise) => ({
+  type: ADD_Exercise,
+  data: Exercise,
+});
 
-export const deleteFood = (key) => (
-  {
-    type: DELETE_FOOD,
-    key: key
-  }
-)
+export const deleteExercise = (key) => ({
+  type: DELETE_Exercise,
+  key: key,
+});
