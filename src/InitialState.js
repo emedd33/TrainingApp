@@ -5,7 +5,6 @@ const INITIAL_STATE = {
       subtitle: "Bodyweight",
     },
   ],
-  showExerciseModal: false,
 };
 
 export default INITIAL_STATE;

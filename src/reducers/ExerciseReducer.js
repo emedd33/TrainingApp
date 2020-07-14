@@ -1,8 +1,4 @@
-import {
-  ADD_EXERCISE,
-  DELETE_EXERCISE,
-  SHOW_EXERCISE_MODAL,
-} from "../actions/Types";
+import { ADD_EXERCISE, DELETE_EXERCISE } from "../actions/Types";
 import INITIAL_STATE from "../InitialState";
 
 const ExerciseReducer = (state = INITIAL_STATE, action) => {
@@ -20,11 +16,6 @@ const ExerciseReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         exerciseList: state.exerciseList.filter((item) => item.key !== key),
-      };
-    case SHOW_EXERCISE_MODAL:
-      return {
-        ...state,
-        showExerciseModal: action.data,
       };
     default:
       return state;

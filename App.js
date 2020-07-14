@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./src/screens/HomeScreen";
 import ExerciseScreen from "./src/screens/ExerciseScreen";
+import AddExerciseScreen from "./src/screens/AddExerciseScreen";
 import { Provider } from "react-redux";
 import configureStore from "./src/store";
 import HeaderBar from "./src/components/molecules/HeaderBar";
@@ -22,6 +23,7 @@ export default function App() {
             }}
           />
           <Stack.Screen name="Exercise" component={ExerciseScreen} />
+          <Stack.Screen name="AddExercise" component={AddExerciseScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

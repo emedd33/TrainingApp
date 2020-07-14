@@ -9,8 +9,3 @@ export const deleteExercise = (key) => ({
   type: DELETE_EXERCISE,
   key: key,
 });
-
-export const showExerciseModal = (bool) => ({
-  type: SHOW_EXERCISE_MODAL,
-  data: bool,
-});

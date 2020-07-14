@@ -16,7 +16,7 @@ function HomeScreen(props) {
   );
 }
 const page = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "red" },
+  container: { flex: 1 },
   navigationButton: {
     margin: "auto",
   },
