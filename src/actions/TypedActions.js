@@ -1,11 +1,16 @@
-import { ADD_Exercise, DELETE_Exercise } from "./Types";
+import { ADD_EXERCISE, DELETE_EXERCISE, SHOW_EXERCISE_MODAL } from "./Types";
 
 export const addFood = (Exercise) => ({
-  type: ADD_Exercise,
+  type: ADD_EXERCISE,
   data: Exercise,
 });
 
 export const deleteExercise = (key) => ({
-  type: DELETE_Exercise,
+  type: DELETE_EXERCISE,
   key: key,
+});
+
+export const showExerciseModal = (bool) => ({
+  type: SHOW_EXERCISE_MODAL,
+  data: bool,
 });

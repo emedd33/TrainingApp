@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Form } from "react-native";
 
 import ExerciseList from "../../components/molecules/ExerciseList";
-import AppModal from "../../components/molecules/AppModal/AppModal";
+import AppModal from "../../components/molecules/AppModal";
 
 function ExerciseScreen(props) {
   return (

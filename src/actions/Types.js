@@ -1,2 +1,3 @@
-export const ADD_Exercise = "ADD_Exercise";
-export const DELETE_Exercise = "DELETE_Exercise";
+export const ADD_EXERCISE = "ADD_EXERCISE";
+export const DELETE_EXERCISE = "DELETE_EXERCISE";
+export const SHOW_EXERCISE_MODAL = "SHOW_EXERCISE_MODAL";

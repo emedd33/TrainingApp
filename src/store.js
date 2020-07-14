@@ -8,6 +8,7 @@ export const INITIAL_STATE = {
       subtitle: "Bodyweight",
     },
   ],
+  showExerciseModal: false,
 };
 
 const rootReducer = combineReducers({

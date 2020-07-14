@@ -1,9 +1,13 @@
-import { ADD_Exercise, DELETE_Exercise } from "../actions/Types";
+import {
+  ADD_EXERCISE,
+  DELETE_EXERCISE,
+  SHOW_EXERCISE_MODAL,
+} from "../actions/Types";
 import { INITIAL_STATE } from "../store";
 
 const ExerciseReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ADD_Exercise:
+    case ADD_EXERCISE:
       return {
         ...state,
         exerciseList: state.exerciseList.concat({
@@ -12,10 +16,15 @@ const ExerciseReducer = (state = INITIAL_STATE, action) => {
           subtitle: "",
         }),
       };
-    case DELETE_Exercise:
+    case DELETE_EXERCISE:
       return {
         ...state,
         exerciseList: state.exerciseList.filter((item) => item.key !== key),
+      };
+    case SHOW_EXERCISE_MODAL:
+      return {
+        ...state,
+        showExerciseModal: action.data,
       };
     default:
       return state;
