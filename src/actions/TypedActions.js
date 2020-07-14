@@ -1,6 +1,6 @@
 import { ADD_EXERCISE, DELETE_EXERCISE, SHOW_EXERCISE_MODAL } from "./Types";
 
-export const addFood = (Exercise) => ({
+export const addExercise = (Exercise) => ({
   type: ADD_EXERCISE,
   data: Exercise,
 });
