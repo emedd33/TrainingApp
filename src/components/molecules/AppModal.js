@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { Button, Modal, Portal, Provider, Text } from "react-native-paper";
+import React from "react";
+import { Modal, Portal, Provider, Text } from "react-native-paper";
 import { connect } from "react-redux";
 import ActionButton from "react-native-action-button";
 import Icon from "react-native-vector-icons/Ionicons";
 import { List } from "react-native-paper";
 import { View, StyleSheet } from "react-native";
-import AddExerciseButton from "../atoms/AddExerciseButton";
 import { showExerciseModal } from "../../actions/TypedActions";
 
 const AppModal = (props) => {
@@ -13,6 +12,7 @@ const AppModal = (props) => {
     return props.exerciseList.map((v, i) => (
       <List.Item
         title={v.name}
+        key={i}
         left={() => <List.Icon color="#000" icon="folder" />}
       />
     ));

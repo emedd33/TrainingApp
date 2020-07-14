@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Form } from "react-native";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
-import ExerciseList from "../../components/molecules/ExerciseList";
 import AppModal from "../../components/molecules/AppModal";
 
 function ExerciseScreen(props) {
@@ -13,10 +12,6 @@ function ExerciseScreen(props) {
 }
 const page = StyleSheet.create({
   container: { flex: 1, backgroundColor: "red" },
-  title: {
-    textAlign: "center",
-    fontSize: "2rem",
-  },
   navigationButton: {
     margin: "auto",
   },

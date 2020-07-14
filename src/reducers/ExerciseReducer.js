@@ -3,7 +3,7 @@ import {
   DELETE_EXERCISE,
   SHOW_EXERCISE_MODAL,
 } from "../actions/Types";
-import { INITIAL_STATE } from "../store";
+import INITIAL_STATE from "../InitialState";
 
 const ExerciseReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {

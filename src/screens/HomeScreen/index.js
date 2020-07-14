@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Button, Input } from "react-native-elements";
-import { connect } from "react-redux";
+import { Button } from "react-native-elements";
 
 function HomeScreen(props) {
   return (
     <View style={page.container}>
-      <Text style={page.title}>Home Screen</Text>
+      <Text>Home Screen</Text>
 
       <Button
         style={page.navigationButton}
@@ -18,10 +17,6 @@ function HomeScreen(props) {
 }
 const page = StyleSheet.create({
   container: { flex: 1, backgroundColor: "red" },
-  title: {
-    textAlign: "center",
-    fontSize: "2rem",
-  },
   navigationButton: {
     margin: "auto",
   },
