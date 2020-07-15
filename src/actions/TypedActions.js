@@ -6,6 +6,7 @@ import {
   UPDATE_EXERCISE_FORM,
   DELETE_ROUTINE,
   ADD_ROUTINE,
+  SET_SELECTED_ITEM,
 } from "./Types";
 
 export const addExercise = (Exercise) => ({
@@ -41,4 +42,9 @@ export const deleteRoutine = (key) => ({
 export const addRoutine = (routine) => ({
   type: ADD_ROUTINE,
   data: routine,
+});
+
+export const setSelectedItem = (item) => ({
+  type: SET_SELECTED_ITEM,
+  data: item,
 });

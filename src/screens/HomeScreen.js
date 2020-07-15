@@ -13,7 +13,7 @@ function HomeScreen(props) {
       <Button
         style={page.navigationButton}
         title="Go to Routines"
-        onPress={() => props.navigation.navigate("Routine")}
+        onPress={() => props.navigation.navigate("Routine", { item: "name" })}
       />
     </View>
   );

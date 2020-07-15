@@ -9,6 +9,8 @@ import configureStore from "./src/store";
 import HeaderBar from "./src/components/molecules/HeaderBar";
 import RoutineScreen from "./src/screens/RoutineScreen";
 import AddRoutineScreen from "./src/screens/AddRoutineScreen";
+import RoutineDetailScreen from "./src/screens/RoutineDetailScreen";
+import ExerciseDetailScreen from "./src/screens/ExerciseDetailScreen";
 
 const Stack = createStackNavigator();
 const store = configureStore();
@@ -53,6 +55,24 @@ export default function App() {
             options={{
               headerTitle: (props) => (
                 <HeaderBar headerTitle="Add new routine" />
+              ),
+            }}
+          />
+          <Stack.Screen
+            name="RoutineDetail"
+            component={RoutineDetailScreen}
+            options={{
+              headerTitle: (props) => (
+                <HeaderBar headerTitle="Routine detail" />
+              ),
+            }}
+          />
+          <Stack.Screen
+            name="ExerciseDetail"
+            component={ExerciseDetailScreen}
+            options={{
+              headerTitle: (props) => (
+                <HeaderBar headerTitle="Routine detail" />
               ),
             }}
           />

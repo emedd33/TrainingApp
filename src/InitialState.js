@@ -31,6 +31,7 @@ const INITIAL_STATE = {
       key: 0,
     },
   ],
+  selectedDetailItem: null,
 };
 
 export default INITIAL_STATE;

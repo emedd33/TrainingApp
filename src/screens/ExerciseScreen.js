@@ -15,7 +15,8 @@ function ExerciseScreen(props) {
       <ItemList
         list={props.exerciseList}
         subHeader="My exercises"
-        deleteFunction={props.deleteExercise}
+        deleteItemFunction={props.deleteExercise}
+        itemNavigation={() => props.navigation.navigate("ExerciseDetail")}
       />
       <FloatingRedirectButton
         navigation={props.navigation}
