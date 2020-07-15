@@ -4,6 +4,8 @@ import {
   ADD_CATEGORY,
   DELETE_CATEGORY,
   UPDATE_EXERCISE_FORM,
+  DELETE_ROUTINE,
+  ADD_ROUTINE,
 } from "./Types";
 
 export const addExercise = (Exercise) => ({
@@ -29,4 +31,14 @@ export const deleteCategory = (key) => ({
 export const updateExerciseForm = (data) => ({
   type: UPDATE_EXERCISE_FORM,
   data: data,
+});
+
+export const deleteRoutine = (key) => ({
+  type: DELETE_ROUTINE,
+  data: key,
+});
+
+export const addRoutine = (routine) => ({
+  type: ADD_ROUTINE,
+  data: routine,
 });

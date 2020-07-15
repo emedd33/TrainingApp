@@ -3,16 +3,19 @@ import { StyleSheet, View } from "react-native";
 import ActionButton from "react-native-action-button";
 import Icon from "react-native-vector-icons/Ionicons";
 import { List } from "react-native-paper";
-import AddExerciseButton from "../components/atoms/AddExerciseButton";
+import FloatingRedirectButton from "../components/atoms/FloatingRedirectButton";
 
 import { connect } from "react-redux";
-import ExerciseList from "../components/molecules/ExerciseList";
+import ItemList from "../components/molecules/ItemList";
 
 function ExerciseScreen(props) {
   return (
     <View style={page.MainContainer}>
-      <ExerciseList />
-      <AddExerciseButton navigation={props.navigation} />
+      <ItemList list={props.exerciseList} subHeader="My exercises" />
+      <FloatingRedirectButton
+        navigation={props.navigation}
+        redirect="AddExercise"
+      />
     </View>
   );
 }

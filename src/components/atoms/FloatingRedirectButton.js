@@ -4,11 +4,11 @@ import ActionButton from "react-native-action-button";
 import Icon from "react-native-vector-icons/Ionicons";
 import { connect } from "react-redux";
 
-const AddExerciseButton = (props) => {
+const FloatingRedirectButton = (props) => {
   return (
     <ActionButton
       buttonColor="rgba(231,76,60,1)"
-      onPress={() => props.navigation.navigate("AddExercise")}
+      onPress={() => props.navigation.navigate(props.redirect)}
       hideShadow={true}
     ></ActionButton>
   );
@@ -28,4 +28,4 @@ const mapDispatchToProps = (dispatch) => {
     showModal: (bool) => dispatch(showExerciseModal(bool)),
   };
 };
-export default connect(null, mapDispatchToProps)(AddExerciseButton);
+export default connect(null, mapDispatchToProps)(FloatingRedirectButton);

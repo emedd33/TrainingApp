@@ -5,12 +5,15 @@ import { Button } from "react-native-elements";
 function HomeScreen(props) {
   return (
     <View style={page.container}>
-      <Text>Home Screen</Text>
-
       <Button
         style={page.navigationButton}
         title="Go to Exercise"
         onPress={() => props.navigation.navigate("Exercise")}
+      />
+      <Button
+        style={page.navigationButton}
+        title="Go to Routines"
+        onPress={() => props.navigation.navigate("Routine")}
       />
     </View>
   );

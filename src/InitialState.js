@@ -1,3 +1,5 @@
+import { CATEGORY_LIST } from "./assets/const/CATEGORY";
+
 const INITIAL_STATE = {
   exerciseList: [
     {
@@ -6,10 +8,7 @@ const INITIAL_STATE = {
       key: 0,
     },
   ],
-  categoryList: [
-    { label: "Bodyweight", value: "Bodywight", key: 0 },
-    { label: "Weights", value: "Bodyweight", key: 1 },
-  ],
+  categoryList: CATEGORY_LIST,
   exerciseForm: {
     exercise: "",
     category: "",
@@ -17,6 +16,21 @@ const INITIAL_STATE = {
     error: false,
     errorMessage: "",
   },
+  routineList: [
+    {
+      name: "My routine",
+      exercises: [
+        {
+          exercise: "Pullups",
+          reps: 10,
+          sets: 3,
+          tempo: 4010,
+          break: 60,
+        },
+      ],
+      key: 1,
+    },
+  ],
 };
 
 export default INITIAL_STATE;

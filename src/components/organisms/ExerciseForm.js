@@ -5,13 +5,13 @@ import { connect } from "react-redux";
 import { TextInput, Button } from "react-native-paper";
 import DropDownPicker from "react-native-dropdown-picker";
 import ErrorMessage from "../atoms/ErrorMessage";
-import AddCategoryType from "../molecules/AddCategoryType";
+import AddCategoryType from "../molecules/DropDownMenu";
 import AddExerciseType from "../molecules/AddExerciseType";
+import DropDownMenu from "../molecules/DropDownMenu";
 const ExerciseForm = (props) => {
   const updateExerciseForm = (data) => {
     props.updateExerciseForm({ ...props.exerciseForm, ...data });
   };
-  console.log(props);
   const submitExercise = () => {
     updateExerciseForm({ hasSubmitted: true });
     if (!props.exerciseForm.error) {
@@ -48,7 +48,11 @@ const ExerciseForm = (props) => {
   return (
     <View>
       <AddExerciseType />
-      <AddCategoryType />
+      <DropDownMenu
+        items={props.categoryList}
+        form={props.exerciseForm}
+        update={props.updateExerciseForm}
+      />
 
       {props.exerciseForm.hasSubmitted && props.exerciseForm.error ? (
         <ErrorMessage message={props.exerciseForm.ErrorMessage} />
@@ -58,7 +62,7 @@ const ExerciseForm = (props) => {
           submitExercise();
         }}
       >
-        Add new
+        Add new exercise
       </Button>
     </View>
   );
