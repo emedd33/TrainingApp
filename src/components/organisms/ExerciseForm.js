@@ -5,12 +5,14 @@ import { connect } from "react-redux";
 import { TextInput, Button } from "react-native-paper";
 import DropDownPicker from "react-native-dropdown-picker";
 import ErrorMessage from "../atoms/ErrorMessage";
-const AddExerciseForm = (props) => {
+import AddCategoryType from "../molecules/AddCategoryType";
+import AddExerciseType from "../molecules/AddExerciseType";
+const ExerciseForm = (props) => {
   const updateExerciseForm = (data) => {
     props.updateExerciseForm({ ...props.exerciseForm, ...data });
   };
-
-  const submitExercise = (text) => {
+  console.log(props);
+  const submitExercise = () => {
     updateExerciseForm({ hasSubmitted: true });
     if (!props.exerciseForm.error) {
       props.addExercise(props.exerciseForm.exercise);
@@ -45,28 +47,8 @@ const AddExerciseForm = (props) => {
   }, [props.exerciseForm.exercise, props.exerciseForm.category]);
   return (
     <View>
-      <TextInput
-        value={props.exerciseForm.exercise}
-        onChangeText={(text) =>
-          updateExerciseForm({ exercise: text, hasSubmitted: false })
-        }
-        onSubmitEditing={() => {
-          submitExercise(text);
-        }}
-      />
-
-      <DropDownPicker
-        items={props.categoryList}
-        containerStyle={{ height: 40 }}
-        style={{ backgroundColor: "#fafafa" }}
-        itemStyle={{
-          justifyContent: "flex-start",
-        }}
-        dropDownStyle={{ backgroundColor: "#fafafa" }}
-        onChangeItem={(item) =>
-          updateExerciseForm({ category: item.value, hasSubmitted: false })
-        }
-      />
+      <AddExerciseType />
+      <AddCategoryType />
 
       {props.exerciseForm.hasSubmitted && props.exerciseForm.error ? (
         <ErrorMessage message={props.exerciseForm.ErrorMessage} />
@@ -97,4 +79,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddExerciseForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ExerciseForm);

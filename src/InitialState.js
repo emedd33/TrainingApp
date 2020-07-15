@@ -3,11 +3,12 @@ const INITIAL_STATE = {
     {
       name: "Pullups",
       subtitle: "Bodyweight",
+      key: 0,
     },
   ],
   categoryList: [
-    { label: "Bodyweight", value: "Bodywight" },
-    { label: "Weights", value: "Bodyweight" },
+    { label: "Bodyweight", value: "Bodywight", key: 0 },
+    { label: "Weights", value: "Bodyweight", key: 1 },
   ],
   exerciseForm: {
     exercise: "",

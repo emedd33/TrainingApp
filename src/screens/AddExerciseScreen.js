@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-elements";
-import AddExerciseForm from "../components/organisms/AddExerciseForm";
+import ExerciseForm from "../components/organisms/ExerciseForm";
 
 function AddExerciseScreen(props) {
   return (
     <View style={styles.container}>
-      <AddExerciseForm navigation={props.navigation} />
+      <ExerciseForm navigation={props.navigation} />
     </View>
   );
 }

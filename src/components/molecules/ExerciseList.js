@@ -1,16 +1,17 @@
 import { connect } from "react-redux";
 import React from "react";
-
-import Icon from "react-native-vector-icons/Ionicons";
-import { List } from "react-native-paper";
-import { ScrollView, StyleSheet } from "react-native";
+import Icon from "react-native-vector-icons/AntDesign";
+import { List, IconButton } from "react-native-paper";
+import { ScrollView, StyleSheet, View } from "react-native";
+import DeleteExerciseButton from "../atoms/DeleteExerciseButton";
 const ExerciseList = (props) => {
   const renderList = () => {
     return props.exerciseList.map((v, i) => (
       <List.Item
         title={v.name}
-        key={i}
+        key={v.key}
         left={() => <List.Icon color="#000" icon="folder" />}
+        right={() => <DeleteExerciseButton index={v.key} />}
       />
     ));
   };

@@ -6,7 +6,7 @@ import { List } from "react-native-paper";
 import AddExerciseButton from "../components/atoms/AddExerciseButton";
 
 import { connect } from "react-redux";
-import ExerciseList from "../components/organisms/ExerciseList";
+import ExerciseList from "../components/molecules/ExerciseList";
 
 function ExerciseScreen(props) {
   return (
