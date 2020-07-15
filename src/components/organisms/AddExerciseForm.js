@@ -1,49 +1,79 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { addExercise } from "../../actions/TypedActions";
+import { addExercise, updateExerciseForm } from "../../actions/TypedActions";
 import { View, Text, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { TextInput, Button } from "react-native-paper";
-import { ScrollView } from "react-native-gesture-handler";
+import DropDownPicker from "react-native-dropdown-picker";
 import ErrorMessage from "../atoms/ErrorMessage";
 const AddExerciseForm = (props) => {
-  const [newExercise, setNewExercise] = useState("");
-  const [error, setError] = useState({ isError: false, message: "" });
-  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const updateExerciseForm = (data) => {
+    props.updateExerciseForm({ ...props.exerciseForm, ...data });
+  };
 
-  const submitExercise = () => {
-    setHasSubmitted(true);
-    console.log(hasSubmitted);
-    if (!error.isError) {
-      props.addExercise(newExercise);
-      setNewExercise("");
-      setError({ isError: false, message: "" });
+  const submitExercise = (text) => {
+    updateExerciseForm({ hasSubmitted: true });
+    if (!props.exerciseForm.error) {
+      props.addExercise(props.exerciseForm.exercise);
+      updateExerciseForm({
+        exercise: "",
+        category: "",
+        error: false,
+        ErrorMessage: "",
+      });
       props.navigation.goBack();
     }
   };
   useEffect(() => {
-    if (newExercise === "") {
-      setError({ isError: true, message: "Please type in an exercise" });
-    } else {
-      setError({ isError: false, message: "" });
+    if (props.exerciseForm.exercise === "") {
+      updateExerciseForm({
+        error: true,
+        ErrorMessage: "Please type in an exercise",
+      });
+      return;
     }
-  }, [newExercise]);
+    if (props.exerciseForm.category === "") {
+      updateExerciseForm({
+        error: true,
+        ErrorMessage: "Please choose a category",
+      });
+      return;
+    }
+    updateExerciseForm({
+      error: false,
+      ErrorMessage: "",
+    });
+  }, [props.exerciseForm.exercise, props.exerciseForm.category]);
   return (
     <View>
       <TextInput
-        value={newExercise}
-        onChangeText={(text) => setNewExercise(text)}
+        value={props.exerciseForm.exercise}
+        onChangeText={(text) =>
+          updateExerciseForm({ exercise: text, hasSubmitted: false })
+        }
         onSubmitEditing={() => {
-          submitExercise();
-          setHasSubmitted(true);
+          submitExercise(text);
         }}
       />
-      {error.isError && hasSubmitted ? (
-        <ErrorMessage message={error.message} />
+
+      <DropDownPicker
+        items={props.categoryList}
+        containerStyle={{ height: 40 }}
+        style={{ backgroundColor: "#fafafa" }}
+        itemStyle={{
+          justifyContent: "flex-start",
+        }}
+        dropDownStyle={{ backgroundColor: "#fafafa" }}
+        onChangeItem={(item) =>
+          updateExerciseForm({ category: item.value, hasSubmitted: false })
+        }
+      />
+
+      {props.exerciseForm.hasSubmitted && props.exerciseForm.error ? (
+        <ErrorMessage message={props.exerciseForm.ErrorMessage} />
       ) : null}
       <Button
         onPress={() => {
           submitExercise();
-          setHasSubmitted(true);
         }}
       >
         Add new
@@ -55,12 +85,15 @@ const AddExerciseForm = (props) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addExercise: (exercise) => dispatch(addExercise(exercise)),
+    updateExerciseForm: (data) => dispatch(updateExerciseForm(data)),
   };
 };
 
 const mapStateToProps = (state) => {
   return {
     exerciseList: state.ExerciseReducer.exerciseList,
+    exerciseForm: state.ExerciseFormReducer.exerciseForm,
+    categoryList: state.CategoryReducer.categoryList,
   };
 };
 
