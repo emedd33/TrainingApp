@@ -28,7 +28,7 @@ const INITIAL_STATE = {
           break: 60,
         },
       ],
-      key: 1,
+      key: 0,
     },
   ],
 };

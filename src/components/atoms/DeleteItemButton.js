@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { List, IconButton } from "react-native-paper";
 import { deleteExercise } from "../../actions/TypedActions";
 
-const DeleteExerciseButton = (props) => {
+const DeleteItemButton = (props) => {
   const [deleteItem, setDeleteItem] = useState(false);
   console.log(props);
   useEffect(() => {
     if (deleteItem) {
-      props.deleteExercise(props.index);
+      props.delete(props.index);
     }
   }, [deleteItem]);
   return (
@@ -16,7 +16,7 @@ const DeleteExerciseButton = (props) => {
       icon="delete"
       size={30}
       color="red"
-      deleteExercise={props.deleteExercise}
+      deleteExercise={props.delete}
       onPress={() => {
         setDeleteItem(true);
       }}
@@ -24,9 +24,4 @@ const DeleteExerciseButton = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteExercise: (exercise) => dispatch(deleteExercise(exercise)),
-  };
-};
-export default connect(null, mapDispatchToProps)(DeleteExerciseButton);
+export default DeleteItemButton;

@@ -17,6 +17,13 @@ const RoutineReducer = (state = INITIAL_STATE, action) => {
           key: key,
         }),
       };
+    case DELETE_ROUTINE:
+      return {
+        ...state,
+        routineList: state.routineList.filter(
+          (item) => item.key !== action.data
+        ),
+      };
     default:
       return state;
   }

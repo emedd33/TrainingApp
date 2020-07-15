@@ -7,11 +7,16 @@ import FloatingRedirectButton from "../components/atoms/FloatingRedirectButton";
 
 import { connect } from "react-redux";
 import ItemList from "../components/molecules/ItemList";
+import { deleteExercise } from "../actions/TypedActions";
 
 function ExerciseScreen(props) {
   return (
     <View style={page.MainContainer}>
-      <ItemList list={props.exerciseList} subHeader="My exercises" />
+      <ItemList
+        list={props.exerciseList}
+        subHeader="My exercises"
+        deleteFunction={props.deleteExercise}
+      />
       <FloatingRedirectButton
         navigation={props.navigation}
         redirect="AddExercise"
@@ -34,7 +39,7 @@ const page = StyleSheet.create({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showModal: (bool) => dispatch(showExerciseModal(bool)),
+    deleteExercise: (key) => dispatch(deleteExercise(key)),
   };
 };
 
