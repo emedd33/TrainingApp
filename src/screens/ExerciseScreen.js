@@ -6,23 +6,12 @@ import { List } from "react-native-paper";
 import AddExerciseButton from "../components/atoms/AddExerciseButton";
 
 import { connect } from "react-redux";
+import ExerciseList from "../components/organisms/ExerciseList";
 
 function ExerciseScreen(props) {
-  const renderList = () => {
-    return props.exerciseList.map((v, i) => (
-      <List.Item
-        title={v.name}
-        key={i}
-        left={() => <List.Icon color="#000" icon="folder" />}
-      />
-    ));
-  };
   return (
-    <View style={page.container}>
-      <List.Section>
-        <List.Subheader>Some title</List.Subheader>
-        {renderList()}
-      </List.Section>
+    <View style={page.MainContainer}>
+      <ExerciseList />
       <AddExerciseButton navigation={props.navigation} />
     </View>
   );
@@ -32,6 +21,11 @@ const page = StyleSheet.create({
   actionButtonIcon: {
     fontSize: 20,
     height: 22,
+  },
+  MainContainer: {
+    justifyContent: "center",
+    flex: 1,
+    margin: 10,
   },
 });
 

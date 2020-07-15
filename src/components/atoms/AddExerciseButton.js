@@ -19,6 +19,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     height: 22,
     color: "white",
+    position: "absolute",
+    bottom: 10,
   },
 });
 const mapDispatchToProps = (dispatch) => {

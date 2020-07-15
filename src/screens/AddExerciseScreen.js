@@ -6,7 +6,7 @@ import AddExerciseForm from "../components/organisms/AddExerciseForm";
 function AddExerciseScreen(props) {
   return (
     <View style={styles.container}>
-      <AddExerciseForm />
+      <AddExerciseForm navigation={props.navigation} />
     </View>
   );
 }
