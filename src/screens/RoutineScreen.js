@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import FloatingRedirectButton from "../components/atoms/FloatingRedirectButton";
 import ItemList from "../components/molecules/ItemList";
 import { connect } from "react-redux";
-import { deleteRoutine } from "../actions/TypedActions";
+import { deleteRoutine, addRoutine } from "../actions/TypedActions";
 
 const RoutineScreen = (props) => {
   return (
@@ -11,13 +11,10 @@ const RoutineScreen = (props) => {
       <ItemList
         list={props.routineList}
         subHeader="My routines"
-        deleteFunction={props.deleteRoutine}
+        deleteItemFunction={props.deleteRoutine}
         itemNavigation={() => props.navigation.navigate("RoutineDetail")}
       />
-      <FloatingRedirectButton
-        navigation={props.navigation}
-        redirect={"AddRoutine"}
-      />
+      <FloatingRedirectButton onPress={props.addRoutine} />
     </View>
   );
 };
@@ -27,6 +24,7 @@ const styles = StyleSheet.create({
 const mapDispatchToProps = (dispatch) => {
   return {
     deleteRoutine: (key) => dispatch(deleteRoutine(key)),
+    addRoutine: () => dispatch(addRoutine()),
   };
 };
 

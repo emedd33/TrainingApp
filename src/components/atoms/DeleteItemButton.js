@@ -5,10 +5,10 @@ import { deleteExercise } from "../../actions/TypedActions";
 
 const DeleteItemButton = (props) => {
   const [deleteItem, setDeleteItem] = useState(false);
-  console.log(props);
   useEffect(() => {
     if (deleteItem) {
       props.delete(props.index);
+      setDeleteItem(false);
     }
   }, [deleteItem]);
   return (

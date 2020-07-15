@@ -7,7 +7,6 @@ const DropDownMenu = (props) => {
   const updateForm = (data) => {
     props.update({ ...props.form, ...data });
   };
-  console.log(props.items);
   return (
     <DropDownPicker
       items={props.items}

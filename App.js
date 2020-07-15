@@ -11,6 +11,7 @@ import RoutineScreen from "./src/screens/RoutineScreen";
 import AddRoutineScreen from "./src/screens/AddRoutineScreen";
 import RoutineDetailScreen from "./src/screens/RoutineDetailScreen";
 import ExerciseDetailScreen from "./src/screens/ExerciseDetailScreen";
+import AddExerciseToRoutineScreen from "./src/screens/AddExerciseToRoutineScreen";
 
 const Stack = createStackNavigator();
 const store = configureStore();
@@ -73,6 +74,16 @@ export default function App() {
             options={{
               headerTitle: (props) => (
                 <HeaderBar headerTitle="Routine detail" />
+              ),
+            }}
+          />
+
+          <Stack.Screen
+            name="AddExerciseToRoutine"
+            component={AddExerciseToRoutineScreen}
+            options={{
+              headerTitle: (props) => (
+                <HeaderBar headerTitle="Add exercise to routine" />
               ),
             }}
           />

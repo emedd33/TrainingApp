@@ -12,7 +12,7 @@ const RoutineReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         routineList: state.routineList.concat({
-          name: "My routine",
+          name: "new routine",
           exercises: [],
           key: key,
         }),

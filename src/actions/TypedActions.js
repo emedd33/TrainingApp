@@ -39,9 +39,8 @@ export const deleteRoutine = (key) => ({
   data: key,
 });
 
-export const addRoutine = (routine) => ({
+export const addRoutine = () => ({
   type: ADD_ROUTINE,
-  data: routine,
 });
 
 export const setSelectedItem = (item) => ({
