@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { List, IconButton } from "react-native-paper";
-import { deleteExercise } from "../../actions/TypedActions";
+import { deleteExercise } from "../../store/actions/TypedActions";
 
 const DeleteItemButton = (props) => {
   const [deleteItem, setDeleteItem] = useState(false);

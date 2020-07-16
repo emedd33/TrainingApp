@@ -1,19 +1,14 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import FloatingRedirectButton from "../components/atoms/FloatingRedirectButton";
-import ItemList from "../components/molecules/ItemList";
 import { connect } from "react-redux";
-import { deleteRoutine, addRoutine } from "../actions/TypedActions";
+import { deleteRoutine, addRoutine } from "../store/actions/TypedActions";
+import RoutineList from "../components/Routine/RoutineList";
 
 const RoutineScreen = (props) => {
   return (
     <View style={styles.container}>
-      <ItemList
-        list={props.routineList}
-        subHeader="My routines"
-        deleteItemFunction={props.deleteRoutine}
-        itemNavigation={() => props.navigation.navigate("RoutineDetail")}
-      />
+      <RoutineList navigation={props.navigation} />
       <FloatingRedirectButton onPress={props.addRoutine} />
     </View>
   );

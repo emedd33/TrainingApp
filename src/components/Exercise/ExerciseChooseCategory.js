@@ -1,9 +1,12 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { addExercise, updateExerciseForm } from "../../actions/TypedActions";
+import {
+  addExercise,
+  updateExerciseForm,
+} from "../../store/actions/TypedActions";
 import { View, Text, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import DropDownPicker from "react-native-dropdown-picker";
-const DropDownMenu = (props) => {
+const ExerciseChooseCategory = (props) => {
   const updateForm = (data) => {
     props.update({ ...props.form, ...data });
   };
@@ -23,4 +26,4 @@ const DropDownMenu = (props) => {
   );
 };
 
-export default DropDownMenu;
+export default ExerciseChooseCategory;

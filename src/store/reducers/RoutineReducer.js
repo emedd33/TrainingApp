@@ -24,6 +24,7 @@ const RoutineReducer = (state = INITIAL_STATE, action) => {
           (item) => item.key !== action.data
         ),
       };
+
     default:
       return state;
   }

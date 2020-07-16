@@ -1,4 +1,8 @@
-import { ADD_EXERCISE, DELETE_EXERCISE } from "../actions/Types";
+import {
+  ADD_EXERCISE,
+  DELETE_EXERCISE,
+  UPDATE_EXERCISE_FORM,
+} from "../actions/Types";
 import INITIAL_STATE from "../InitialState";
 
 const ExerciseReducer = (state = INITIAL_STATE, action) => {
@@ -23,6 +27,11 @@ const ExerciseReducer = (state = INITIAL_STATE, action) => {
         exerciseList: state.exerciseList.filter(
           (item) => item.key !== action.data
         ),
+      };
+    case UPDATE_EXERCISE_FORM:
+      return {
+        ...state,
+        exerciseForm: action.data,
       };
     default:
       return state;

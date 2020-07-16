@@ -5,13 +5,12 @@ import HomeScreen from "./src/screens/HomeScreen";
 import ExerciseScreen from "./src/screens/ExerciseScreen";
 import AddExerciseScreen from "./src/screens/AddExerciseScreen";
 import { Provider } from "react-redux";
-import configureStore from "./src/store";
+import configureStore from "./src/store/store";
 import HeaderBar from "./src/components/molecules/HeaderBar";
 import RoutineScreen from "./src/screens/RoutineScreen";
-import AddRoutineScreen from "./src/screens/AddRoutineScreen";
 import RoutineDetailScreen from "./src/screens/RoutineDetailScreen";
 import ExerciseDetailScreen from "./src/screens/ExerciseDetailScreen";
-import AddExerciseToRoutineScreen from "./src/screens/AddExerciseToRoutineScreen";
+import RoutineAddExerciseScreen from "./src/screens/RoutineAddExerciseScreen";
 
 const Stack = createStackNavigator();
 const store = configureStore();
@@ -51,15 +50,6 @@ export default function App() {
             }}
           />
           <Stack.Screen
-            name="AddRoutine"
-            component={AddRoutineScreen}
-            options={{
-              headerTitle: (props) => (
-                <HeaderBar headerTitle="Add new routine" />
-              ),
-            }}
-          />
-          <Stack.Screen
             name="RoutineDetail"
             component={RoutineDetailScreen}
             options={{
@@ -80,7 +70,7 @@ export default function App() {
 
           <Stack.Screen
             name="AddExerciseToRoutine"
-            component={AddExerciseToRoutineScreen}
+            component={RoutineAddExerciseScreen}
             options={{
               headerTitle: (props) => (
                 <HeaderBar headerTitle="Add exercise to routine" />

@@ -6,18 +6,12 @@ import { List } from "react-native-paper";
 import FloatingRedirectButton from "../components/atoms/FloatingRedirectButton";
 
 import { connect } from "react-redux";
-import ItemList from "../components/molecules/ItemList";
-import { deleteExercise } from "../actions/TypedActions";
-
+import { deleteExercise } from "../store/actions/TypedActions";
+import ExerciseList from "../components/Exercise/ExerciseList";
 function ExerciseScreen(props) {
   return (
     <View style={page.MainContainer}>
-      <ItemList
-        list={props.exerciseList}
-        subHeader="My exercises"
-        deleteItemFunction={props.deleteExercise}
-        itemNavigation={() => props.navigation.navigate("ExerciseDetail")}
-      />
+      <ExerciseList navigation={props.navigation} />
       <FloatingRedirectButton
         navigation={props.navigation}
         redirect="AddExercise"

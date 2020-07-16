@@ -1,4 +1,4 @@
-import { CATEGORY_LIST } from "./assets/const/CATEGORY";
+import { CATEGORY_LIST } from "../assets/const/CATEGORY";
 
 const INITIAL_STATE = {
   exerciseList: [
@@ -21,7 +21,27 @@ const INITIAL_STATE = {
       name: "My routine",
       exercises: [
         {
-          exercise: "Pullups",
+          name: "Pullups",
+          reps: 10,
+          sets: 3,
+          tempo: 4010,
+          break: 60,
+        },
+        {
+          name: "Pushups",
+          reps: 10,
+          sets: 3,
+          tempo: 4010,
+          break: 60,
+        },
+      ],
+      key: 0,
+    },
+    {
+      name: "My routine",
+      exercises: [
+        {
+          name: "Pullups",
           reps: 10,
           sets: 3,
           tempo: 4010,

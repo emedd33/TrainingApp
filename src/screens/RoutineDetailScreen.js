@@ -2,23 +2,19 @@ import React from "react";
 
 import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 import FloatingRedirectButton from "../components/atoms/FloatingRedirectButton";
-import ItemList from "../components/molecules/ItemList";
-
+import { connect } from "react-redux";
+import RoutineExerciseList from "../components/Routine/RoutineExerciseList";
 const RoutineDetailScreen = (props) => {
   console.log(props);
-
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.inputText}>
-        <Text>Press Here</Text>
+        <Text>{props.route.params.routine.name}</Text>
       </TouchableOpacity>
-      <ItemList
-        list={[
-          { name: "hei", key: 0 },
-          { name: "deh", key: 1 },
-        ]}
-        subHeader="Exercises"
+      <RoutineExerciseList
+        exerciseList={props.route.params.routine.exercises}
       />
+
       <FloatingRedirectButton
         redirect="AddExerciseToRoutine"
         navigation={props.navigation}
