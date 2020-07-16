@@ -4,6 +4,9 @@ import {
   DELETE_ROUTINE,
   DELETE_ROUTINE_EXERCISE,
   SET_SELECTED_ROUTINE,
+  UPDATE_ROUTINE_EXERCISE_FORM,
+  CLEAN_ROUTINE_EXERCISE_FORM,
+  ADD_ROUTINE_EXERCISE,
 } from "../actions/Types";
 
 const RoutineReducer = (state = INITIAL_STATE, action) => {
@@ -30,7 +33,7 @@ const RoutineReducer = (state = INITIAL_STATE, action) => {
         ),
       };
     case DELETE_ROUTINE_EXERCISE:
-      const updatedRoutineExercise = state.routineList[
+      let updatedRoutineExercise = state.routineList[
         action.data.routineKey
       ].exercises.filter((item) => item.key !== action.data.exerciseKey);
       let newRoutineList = state.routineList;
@@ -48,7 +51,33 @@ const RoutineReducer = (state = INITIAL_STATE, action) => {
         ...state,
         selectedRoutine: action.data,
       };
-
+    case UPDATE_ROUTINE_EXERCISE_FORM:
+      return {
+        ...state,
+        routineExerciseForm: action.data,
+      };
+    case CLEAN_ROUTINE_EXERCISE_FORM:
+      return {
+        ...state,
+        routineExerciseForm: INITIAL_STATE.routineExerciseForm,
+      };
+    case ADD_ROUTINE_EXERCISE:
+      debugger;
+      const updatedAddRoutineExercise = state.routineList[
+        action.data.routineKey
+      ].exercises.concat(action.data.exercises);
+      let newAddRoutineList = state.routineList;
+      newAddRoutineList[
+        action.data.routineKey
+      ].exercises = updatedAddRoutineExercise;
+      return {
+        ...state,
+        routineList: newAddRoutineList,
+        selectedRoutine: {
+          ...state.selectedRoutine,
+          exercises: updatedAddRoutineExercise,
+        },
+      };
     default:
       return state;
   }

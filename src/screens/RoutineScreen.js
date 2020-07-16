@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import FloatingRedirectButton from "../components/atoms/FloatingRedirectButton";
+import FloatingButton from "../components/atoms/FloatingButton";
 import RoutineList from "../components/Routine/RoutineList";
 
 const RoutineScreen = (props) => {
   return (
     <View style={styles.container}>
       <RoutineList navigation={props.navigation} />
-      <FloatingRedirectButton onPress={props.addRoutine} />
+      <FloatingButton onPress={props.addRoutine} />
     </View>
   );
 };

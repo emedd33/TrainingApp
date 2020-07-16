@@ -1,7 +1,7 @@
 import React from "react";
 
 import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
-import FloatingRedirectButton from "../components/atoms/FloatingRedirectButton";
+import FloatingButton from "../components/atoms/FloatingButton";
 import { connect } from "react-redux";
 import RoutineExerciseList from "../components/Routine/RoutineExerciseList";
 const RoutineDetailScreen = (props) => {
@@ -12,9 +12,10 @@ const RoutineDetailScreen = (props) => {
       </TouchableOpacity>
       <RoutineExerciseList routine={props.route.params.routine} />
 
-      <FloatingRedirectButton
+      <FloatingButton
         redirect="AddExerciseToRoutine"
         navigation={props.navigation}
+        params={props.route.params.routine}
       />
     </View>
   );

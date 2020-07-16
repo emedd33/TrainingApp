@@ -54,6 +54,13 @@ const INITIAL_STATE = {
     },
   ],
   selectedDetailItem: null,
+  routineExerciseForm: {
+    name: null,
+    reps: null,
+    sets: null,
+    tempo: null,
+    break: null,
+  },
 };
 
 export default INITIAL_STATE;

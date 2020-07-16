@@ -6,7 +6,7 @@ import ActionButton from "react-native-action-button";
 import Icon from "react-native-vector-icons/Ionicons";
 import { connect } from "react-redux";
 
-const FloatingRedirectButton = (props) => {
+const FloatingButton = (props) => {
   return (
     <ActionButton
       buttonColor="rgba(231,76,60,1)"
@@ -15,7 +15,9 @@ const FloatingRedirectButton = (props) => {
           return props.onPress();
         }
         if (props.redirect && props.navigation) {
-          return props.navigation.navigate(props.redirect);
+          return props.navigation.navigate(props.redirect, {
+            params: props.params,
+          });
         }
       }}
       hideShadow={true}
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
   },
 });
 
-FloatingRedirectButton.propTypes = {
+FloatingButton.propTypes = {
   redirect: PropTypes.string,
   navigation: PropTypes.object,
   onPress: PropTypes.object,
@@ -43,4 +45,4 @@ const mapDispatchToProps = (dispatch) => {
     showModal: (bool) => dispatch(showExerciseModal(bool)),
   };
 };
-export default connect(null, mapDispatchToProps)(FloatingRedirectButton);
+export default connect(null, mapDispatchToProps)(FloatingButton);

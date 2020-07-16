@@ -1,16 +1,13 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import FloatingRedirectButton from "../components/atoms/FloatingRedirectButton";
+import FloatingButton from "../components/atoms/FloatingButton";
 import ExerciseList from "../components/Exercise/ExerciseList";
 
 function ExerciseScreen(props) {
   return (
     <View style={page.MainContainer}>
       <ExerciseList navigation={props.navigation} />
-      <FloatingRedirectButton
-        navigation={props.navigation}
-        redirect="AddExercise"
-      />
+      <FloatingButton navigation={props.navigation} redirect="AddExercise" />
     </View>
   );
 }
