@@ -13,7 +13,7 @@ const INITIAL_STATE = {
     exercise: "",
     category: "",
     hasSubmitted: false,
-    error: false,
+    error: true,
     errorMessage: "",
   },
   routineList: [

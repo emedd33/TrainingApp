@@ -20,54 +20,55 @@ const ExerciseForm = (props) => {
   const exerciseForm = useSelector(
     (state) => state.ExerciseReducer.exerciseForm
   );
-  const exerciseList = useSelector(
-    (state) => state.ExerciseReducer.exerciseList
-  );
-  const categoryList = useSelector(
-    (state) => state.CategoryReducer.categoryList
-  );
-  const updateExerciseForm = (data) => {
-    props.updateExerciseForm({ ...props.exerciseForm, ...data });
-  };
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   const submitExercise = () => {
-    updateExerciseForm({ hasSubmitted: true });
-    debugger;
-    if (exerciseForm.error) {
+    setHasSubmitted(true);
+    if (!exerciseForm.error) {
       dispatch({ type: ADD_EXERCISE, data: exerciseForm.exercise });
       dispatch({ type: CLEAN_EXERCISE_FORM });
       props.navigation.goBack();
     }
   };
   useEffect(() => {
-    if (props.exerciseForm.exercise === "") {
+    setHasSubmitted(false);
+    if (exerciseForm.exercise === "") {
       dispatch({
         type: UPDATE_EXERCISE_FORM,
         data: {
+          ...exerciseForm,
           error: true,
           ErrorMessage: "Please type in an exercise",
         },
       });
       return;
     }
-    if (props.exerciseForm.category === "") {
-      updateExerciseForm({
-        error: true,
-        ErrorMessage: "Please choose a category",
+    if (exerciseForm.category === "") {
+      dispatch({
+        type: UPDATE_EXERCISE_FORM,
+        data: {
+          ...exerciseForm,
+          error: true,
+          errorMessage: "Please choose a category",
+        },
       });
       return;
     }
-    updateExerciseForm({
-      error: false,
-      ErrorMessage: "",
+    dispatch({
+      type: UPDATE_EXERCISE_FORM,
+      data: {
+        ...exerciseForm,
+        error: false,
+        errorMessage: "",
+      },
     });
-  }, [props.exerciseForm.exercise, props.exerciseForm.category]);
+  }, [exerciseForm.exercise, exerciseForm.category]);
   return (
     <View>
       <ExerciseAddNew />
       <ExerciseChooseCategory />
 
-      {exerciseForm.hasSubmitted && exerciseForm.error ? (
-        <ErrorMessage message={props.exerciseForm.ErrorMessage} />
+      {hasSubmitted && exerciseForm.error ? (
+        <ErrorMessage message={exerciseForm.ErrorMessage} />
       ) : null}
       <Button
         onPress={() => {
