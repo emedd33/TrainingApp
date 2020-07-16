@@ -62,7 +62,6 @@ const RoutineReducer = (state = INITIAL_STATE, action) => {
         routineExerciseForm: INITIAL_STATE.routineExerciseForm,
       };
     case ADD_ROUTINE_EXERCISE:
-      debugger;
       const updatedAddRoutineExercise = state.routineList[
         action.data.routineKey
       ].exercises.concat(action.data.exercises);

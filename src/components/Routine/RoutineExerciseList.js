@@ -39,6 +39,7 @@ const RoutineExerciseList = (props) => {
         <View style={styles.subContainer}>
           <Text>reps: {exercise.rep}</Text>
           <Text>sets: {exercise.sets}</Text>
+          <Text>weights: {exercise.weights}</Text>
           <Text>tempo: {exercise.tempo}</Text>
           <Text>break: {exercise.break} second</Text>
         </View>

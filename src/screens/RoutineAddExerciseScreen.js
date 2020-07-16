@@ -66,7 +66,6 @@ const RoutineAddExerciseScreen = (props) => {
       <View>
         <TextInput
           keyboardType="number-pad"
-          // value={props.exerciseForm.exercise}
           placeholder="Write in number of sets"
           onChangeText={(number) => {
             setSetsError(false);
@@ -81,7 +80,6 @@ const RoutineAddExerciseScreen = (props) => {
         ) : null}
         <TextInput
           keyboardType="number-pad"
-          // value={props.exerciseForm.exercise}
           placeholder="Write in number of reps"
           onChangeText={(number) => {
             setRepsError(false);
@@ -96,7 +94,16 @@ const RoutineAddExerciseScreen = (props) => {
         ) : null}
         <TextInput
           keyboardType="number-pad"
-          // value={props.exerciseForm.exercise}
+          placeholder="write in weight amount"
+          onChangeText={(number) =>
+            dispatch({
+              type: UPDATE_ROUTINE_EXERCISE_FORM,
+              data: { ...routineExerciseForm, weights: number },
+            })
+          }
+        />
+        <TextInput
+          keyboardType="number-pad"
           placeholder="write in the tempo for reps"
           onChangeText={(number) =>
             dispatch({
@@ -106,7 +113,6 @@ const RoutineAddExerciseScreen = (props) => {
           }
         />
         <TextInput
-          // value={props.exerciseForm.exercise}
           placeholder="Write in the break duration"
           onChangeText={(number) =>
             dispatch({

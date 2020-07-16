@@ -26,6 +26,7 @@ const INITIAL_STATE = {
           reps: 10,
           sets: 3,
           tempo: 4010,
+          weights: 0,
           break: 60,
         },
         {
@@ -34,6 +35,7 @@ const INITIAL_STATE = {
           reps: 10,
           sets: 3,
           tempo: 4010,
+          weights: 5,
           break: 60,
         },
       ],
@@ -47,6 +49,7 @@ const INITIAL_STATE = {
           reps: 10,
           sets: 3,
           tempo: 4010,
+          weights: 5,
           break: 60,
         },
       ],
@@ -59,6 +62,7 @@ const INITIAL_STATE = {
     reps: null,
     sets: null,
     tempo: null,
+    weights: null,
     break: null,
   },
 };
