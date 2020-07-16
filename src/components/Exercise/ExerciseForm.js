@@ -4,34 +4,48 @@ import {
   updateExerciseForm,
 } from "../../store/actions/TypedActions";
 import { View, Text, StyleSheet } from "react-native";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { TextInput, Button } from "react-native-paper";
 import DropDownPicker from "react-native-dropdown-picker";
 import ErrorMessage from "../atoms/ErrorMessage";
 import ExerciseAddNew from "./ExerciseAddNew";
 import ExerciseChooseCategory from "./ExerciseChooseCategory";
+import {
+  CLEAN_EXERCISE_FORM,
+  ADD_EXERCISE,
+  UPDATE_EXERCISE_FORM,
+} from "../../store/actions/Types";
 const ExerciseForm = (props) => {
+  const dispatch = useDispatch();
+  const exerciseForm = useSelector(
+    (state) => state.ExerciseReducer.exerciseForm
+  );
+  const exerciseList = useSelector(
+    (state) => state.ExerciseReducer.exerciseList
+  );
+  const categoryList = useSelector(
+    (state) => state.CategoryReducer.categoryList
+  );
   const updateExerciseForm = (data) => {
     props.updateExerciseForm({ ...props.exerciseForm, ...data });
   };
   const submitExercise = () => {
     updateExerciseForm({ hasSubmitted: true });
-    if (!props.exerciseForm.error) {
-      props.addExercise(props.exerciseForm.exercise);
-      updateExerciseForm({
-        exercise: "",
-        category: "",
-        error: false,
-        ErrorMessage: "",
-      });
+    debugger;
+    if (exerciseForm.error) {
+      dispatch({ type: ADD_EXERCISE, data: exerciseForm.exercise });
+      dispatch({ type: CLEAN_EXERCISE_FORM });
       props.navigation.goBack();
     }
   };
   useEffect(() => {
     if (props.exerciseForm.exercise === "") {
-      updateExerciseForm({
-        error: true,
-        ErrorMessage: "Please type in an exercise",
+      dispatch({
+        type: UPDATE_EXERCISE_FORM,
+        data: {
+          error: true,
+          ErrorMessage: "Please type in an exercise",
+        },
       });
       return;
     }
@@ -50,13 +64,9 @@ const ExerciseForm = (props) => {
   return (
     <View>
       <ExerciseAddNew />
-      <ExerciseChooseCategory
-        items={props.categoryList}
-        form={props.exerciseForm}
-        update={props.updateExerciseForm}
-      />
+      <ExerciseChooseCategory />
 
-      {props.exerciseForm.hasSubmitted && props.exerciseForm.error ? (
+      {exerciseForm.hasSubmitted && exerciseForm.error ? (
         <ErrorMessage message={props.exerciseForm.ErrorMessage} />
       ) : null}
       <Button

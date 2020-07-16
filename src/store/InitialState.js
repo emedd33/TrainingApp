@@ -22,6 +22,7 @@ const INITIAL_STATE = {
       exercises: [
         {
           name: "Pullups",
+          key: 0,
           reps: 10,
           sets: 3,
           tempo: 4010,
@@ -29,6 +30,7 @@ const INITIAL_STATE = {
         },
         {
           name: "Pushups",
+          key: 1,
           reps: 10,
           sets: 3,
           tempo: 4010,
@@ -48,7 +50,7 @@ const INITIAL_STATE = {
           break: 60,
         },
       ],
-      key: 0,
+      key: 1,
     },
   ],
   selectedDetailItem: null,

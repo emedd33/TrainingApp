@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { List, IconButton } from "react-native-paper";
+import PropTypes from "prop-types";
 import { deleteExercise } from "../../store/actions/TypedActions";
 
 const DeleteItemButton = (props) => {
-  const [deleteItem, setDeleteItem] = useState(false);
-  useEffect(() => {
-    if (deleteItem) {
-      props.delete(props.index);
-      setDeleteItem(false);
-    }
-  }, [deleteItem]);
   return (
     <IconButton
       icon="delete"
@@ -18,10 +12,15 @@ const DeleteItemButton = (props) => {
       color="red"
       deleteExercise={props.delete}
       onPress={() => {
-        setDeleteItem(true);
+        if (props.delete) {
+          props.delete();
+        }
       }}
     />
   );
 };
 
+DeleteItemButton.prototype = {
+  delete: PropTypes.object,
+};
 export default DeleteItemButton;

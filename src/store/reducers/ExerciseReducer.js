@@ -2,6 +2,7 @@ import {
   ADD_EXERCISE,
   DELETE_EXERCISE,
   UPDATE_EXERCISE_FORM,
+  CLEAN_EXERCISE_FORM,
 } from "../actions/Types";
 import INITIAL_STATE from "../InitialState";
 
@@ -32,6 +33,11 @@ const ExerciseReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         exerciseForm: action.data,
+      };
+    case CLEAN_EXERCISE_FORM:
+      return {
+        ...state,
+        exerciseForm: INITIAL_STATE.exerciseForm,
       };
     default:
       return state;

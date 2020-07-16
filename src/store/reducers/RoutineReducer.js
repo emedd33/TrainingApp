@@ -1,5 +1,10 @@
 import INITIAL_STATE from "../InitialState";
-import { ADD_ROUTINE, DELETE_ROUTINE } from "../actions/Types";
+import {
+  ADD_ROUTINE,
+  DELETE_ROUTINE,
+  DELETE_ROUTINE_EXERCISE,
+  SET_SELECTED_ROUTINE,
+} from "../actions/Types";
 
 const RoutineReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -23,6 +28,25 @@ const RoutineReducer = (state = INITIAL_STATE, action) => {
         routineList: state.routineList.filter(
           (item) => item.key !== action.data
         ),
+      };
+    case DELETE_ROUTINE_EXERCISE:
+      const updatedRoutineExercise = state.routineList[
+        action.data.routineKey
+      ].exercises.filter((item) => item.key !== action.data.exerciseKey);
+      let newRoutineList = state.routineList;
+      newRoutineList[action.data.routineKey].exercises = updatedRoutineExercise;
+      return {
+        ...state,
+        routineList: newRoutineList,
+        selectedRoutine: {
+          ...state.selectedRoutine,
+          exercises: updatedRoutineExercise,
+        },
+      };
+    case SET_SELECTED_ROUTINE:
+      return {
+        ...state,
+        selectedRoutine: action.data,
       };
 
     default:

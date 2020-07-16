@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
-import { View, Text } from "react-native";
+import React from "react";
+import { View } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
-import { connect } from "react-redux";
-import { TextInput, Button } from "react-native-paper";
+import { TextInput } from "react-native-paper";
+import { useSelector } from "react-redux";
 const RoutineAddExerciseScreen = (props) => {
-  const itemList = props.exerciseList.map((v, i) => {
-    return { label: v.name, value: v.name };
-  });
+  const exerciseList = useSelector((state) =>
+    state.ExerciseReducer.exerciseList.map((v, i) => {
+      return { label: v.name, value: v.name };
+    })
+  );
   return (
     <View>
       <DropDownPicker
-        items={itemList}
+        items={exerciseList}
         containerStyle={{ height: 40 }}
         style={{ backgroundColor: "#fafafa" }}
         itemStyle={{
@@ -48,9 +50,4 @@ const RoutineAddExerciseScreen = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    exerciseList: state.ExerciseReducer.exerciseList,
-  };
-};
-export default connect(mapStateToProps)(RoutineAddExerciseScreen);
+export default RoutineAddExerciseScreen;

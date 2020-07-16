@@ -8,6 +8,8 @@ import {
   ADD_ROUTINE,
   DELETE_ROUTINE_EXERCISE,
   ADD_ROUTINE_EXERCISE,
+  CLEAN_EXERCISE_FORM,
+  SET_SELECTED_ROUTINE,
 } from "./Types";
 
 export const addExercise = (Exercise) => ({
@@ -35,6 +37,10 @@ export const updateExerciseForm = (data) => ({
   data: data,
 });
 
+export const cleanExerciseForm = () => ({
+  type: CLEAN_EXERCISE_FORM,
+});
+
 export const deleteRoutine = (key) => ({
   type: DELETE_ROUTINE,
   data: key,
@@ -51,4 +57,9 @@ export const deleteRoutineExercise = (key) => ({
 
 export const addRoutineExercise = () => ({
   type: ADD_ROUTINE_EXERCISE,
+});
+
+export const setSelectedRoutine = (routine) => ({
+  type: SET_SELECTED_ROUTINE,
+  data: routine,
 });
