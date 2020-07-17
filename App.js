@@ -12,73 +12,16 @@ import RoutineDetailScreen from "./src/screens/RoutineDetailScreen";
 import ExerciseDetailScreen from "./src/screens/ExerciseDetailScreen";
 import RoutineAddExerciseScreen from "./src/screens/RoutineAddExerciseScreen";
 
-const Stack = createStackNavigator();
+import SideMenu from "react-native-side-menu";
+import MenuBar from "./src/components/molecules/MenuBar";
+import Navigation from "./Navigation";
+
 const store = configureStore();
-export default function App() {
+
+export default function App(props) {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{
-              headerTitle: (props) => <HeaderBar headerTitle="Home" />,
-            }}
-          />
-          <Stack.Screen
-            name="Exercise"
-            component={ExerciseScreen}
-            options={{
-              headerTitle: (props) => <HeaderBar headerTitle="Exercises" />,
-            }}
-          />
-          <Stack.Screen
-            name="AddExercise"
-            component={AddExerciseScreen}
-            options={{
-              headerTitle: (props) => (
-                <HeaderBar headerTitle="Add new exercise" />
-              ),
-            }}
-          />
-          <Stack.Screen
-            name="Routine"
-            component={RoutineScreen}
-            options={{
-              headerTitle: (props) => <HeaderBar headerTitle="Routines" />,
-            }}
-          />
-          <Stack.Screen
-            name="RoutineDetail"
-            component={RoutineDetailScreen}
-            options={{
-              headerTitle: (props) => (
-                <HeaderBar headerTitle="Routine detail" />
-              ),
-            }}
-          />
-          <Stack.Screen
-            name="ExerciseDetail"
-            component={ExerciseDetailScreen}
-            options={{
-              headerTitle: (props) => (
-                <HeaderBar headerTitle="Routine detail" />
-              ),
-            }}
-          />
-
-          <Stack.Screen
-            name="AddExerciseToRoutine"
-            component={RoutineAddExerciseScreen}
-            options={{
-              headerTitle: (props) => (
-                <HeaderBar headerTitle="Add exercise to routine" />
-              ),
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Navigation />
     </Provider>
   );
 }
